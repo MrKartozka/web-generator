@@ -10,6 +10,8 @@
 		"@testing-library/jest-dom": "^5.17.0",
 		"@testing-library/react": "^13.4.0",
 		"@testing-library/user-event": "^13.5.0",
+		"axios": "^1.7.2",
+		"markdown-it": "^14.1.0",
 		"pagedjs": "^0.4.3",
 		"pagejs": "^1.0.0",
 		"pdf-lib": "^1.17.1",
@@ -17,6 +19,8 @@
 		"react-dom": "^18.3.1",
 		"react-markdown": "^9.0.1",
 		"react-scripts": "5.0.1",
+		"rehype-raw": "^7.0.0",
+		"rehype-sanitize": "^6.0.0",
 		"remark-gfm": "^4.0.0",
 		"showdown": "^2.1.0",
 		"web-vitals": "^2.1.4"

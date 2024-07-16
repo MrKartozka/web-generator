@@ -4,44 +4,13 @@ import Sidebar from "./components/Sidebar";
 import "./App.css";
 import Layout from "./components/Layout";
 import { Box, Typography } from "@mui/material";
-
-// Шаблоны документов
-const templates = {
-	report: `
-**Обучающийся:** ___ФИО___
-
-**Группа:** ___Группа___
-
-**Вид практики:** ___Вид___
-
-**Тип практики:** ___Тип___
-
-**Наименование предприятия:** ___Предприятие___
-
-**Руководитель:** ___Руководитель___
-
-**Оценка:** ___Оценка___
-  `,
-	diary: `
-**Обучающийся:** ___ФИО___
-
-**Специальность:** ___Специальность___
-
-**Группа:** ___Группа___
-
-**Форма обучения:** ___Форма___
-
-**Вид практики:** ___Вид___
-
-**Тип практики:** ___Тип___
-
-**Учебный год:** ___Год___
-  `,
-};
+import axios from "axios";
 
 // Поля ввода для каждого шаблона
 const inputFields = {
 	report: [
+		"ФАКУЛЬТЕТ",
+		"КАФЕДРА",
 		"ФИО",
 		"Группа",
 		"Вид",
@@ -56,6 +25,8 @@ const inputFields = {
 const DocumentGenerator = () => {
 	const [template, setTemplate] = useState("report");
 	const [documentData, setDocumentData] = useState({
+		ФАКУЛЬТЕТ: "",
+		КАФЕДРА: "",
 		ФИО: "",
 		Группа: "",
 		Вид: "",
@@ -67,6 +38,21 @@ const DocumentGenerator = () => {
 		Форма: "",
 		Год: "",
 	});
+	const [markdownContent, setMarkdownContent] = useState("");
+
+	// Функция для считывания markdown файла
+	const fetchMarkdownContent = async () => {
+		try {
+			const response = await axios.get("/Report.md");
+			setMarkdownContent(response.data);
+		} catch (error) {
+			console.error("Error fetching markdown file:", error);
+		}
+	};
+
+	useEffect(() => {
+		fetchMarkdownContent();
+	}, []);
 
 	const handleTemplateChange = (template) => {
 		setTemplate(template);
@@ -82,7 +68,7 @@ const DocumentGenerator = () => {
 
 	const converter = new showdown.Converter();
 	const generateMarkdown = () => {
-		let markdown = templates[template];
+		let markdown = markdownContent;
 		for (let key in documentData) {
 			const regex = new RegExp(`___${key}___`, "g");
 			markdown = markdown.replace(regex, documentData[key]);

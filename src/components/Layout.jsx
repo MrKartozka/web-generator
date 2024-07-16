@@ -27,7 +27,6 @@ const Layout = (props) => {
 				))}
 			</div>
 			<div className="output">
-				<h2>{title}</h2>
 				<div dangerouslySetInnerHTML={{ __html: props.htmlContent }} />
 			</div>
 		</div>
