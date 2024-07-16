@@ -5,13 +5,9 @@ import "./App.css";
 import Layout from "./components/Layout";
 import { Box, Typography } from "@mui/material";
 
-// import 'pagedjs/dist/paged.polyfill.js';
-
 // Шаблоны документов
 const templates = {
 	report: `
-# Отчет по производственной практике
-
 **Обучающийся:** ___ФИО___
 
 **Группа:** ___Группа___
@@ -27,8 +23,6 @@ const templates = {
 **Оценка:** ___Оценка___
   `,
 	diary: `
-# Дневник практики
-
 **Обучающийся:** ___ФИО___
 
 **Специальность:** ___Специальность___
@@ -43,6 +37,20 @@ const templates = {
 
 **Учебный год:** ___Год___
   `,
+};
+
+// Поля ввода для каждого шаблона
+const inputFields = {
+	report: [
+		"ФИО",
+		"Группа",
+		"Вид",
+		"Тип",
+		"Предприятие",
+		"Руководитель",
+		"Оценка",
+	],
+	diary: ["ФИО", "Специальность", "Группа", "Форма", "Вид", "Тип", "Год"],
 };
 
 const DocumentGenerator = () => {
@@ -91,23 +99,24 @@ const DocumentGenerator = () => {
 	}, [htmlContent]);
 
 	return (
-		<>
-			<Box container className="App">
-				<Typography variant="h3" className="header-title">
-					URAAAAA
-				</Typography>
-				<Box item className="sidebar">
-					<Sidebar onTemplateChange={handleTemplateChange} />
-				</Box>
-				<Box item className="content">
-					<Layout
-						documentData={documentData}
-						handleInputChange={handleInputChange}
-						htmlContent={htmlContent}
-					/>
-				</Box>
+		<Box className="App">
+			<Typography variant="h3" className="header-title">
+				Заголовок
+			</Typography>
+			<Box className="sidebar">
+				<Sidebar onTemplateChange={handleTemplateChange} />
 			</Box>
-		</>
+			<Box className="content">
+				<Layout
+					documentData={documentData}
+					handleInputChange={handleInputChange}
+					htmlContent={htmlContent}
+					template={template}
+					fields={inputFields[template]}
+				/>
+			</Box>
+		</Box>
 	);
 };
+
 export default DocumentGenerator;

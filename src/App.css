@@ -1,28 +1,23 @@
 .App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  display: grid;
-  grid-area: "header-title header-title"
-    "sidebar content";
-  /* grid-template-columns: 1fr 5fr; */
-  grid-column-gap: 50px;
-}
-
-label {
-  display: block;
-  margin: 10px 0;
-}
-
-
-
-.sidebar {
-  justify-self: start;
-  width: 240px;
-}
-
-.content {
-  justify-self: center;
 }
 
 .header-title {
   color: black;
+  margin-bottom: 20px;
+}
+
+.sidebar {
+  align-self: flex-start;
+  width: 240px;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 20px;
 }
