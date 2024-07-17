@@ -19,7 +19,23 @@ const inputFields = {
 		"Руководитель",
 		"Оценка",
 	],
-	diary: ["ФИО", "Специальность", "Группа", "Форма", "Вид", "Тип", "Год"],
+	diary: [
+		"ФИО",
+		"Направление подготовки",
+		"Специальность",
+		"Направленность (Профиль)",
+		"Учебная группа",
+		"Форма обучения",
+		"Вид практики",
+		"Тип практики",
+		"Учебный год",
+		"Кафедра",
+		"Наименование профильной организации",
+		"Сроки организации практической подготовки",
+		"Руководитель по практической подготовке от кафедры",
+		"Руководитель по практической подготовке от профильной организации",
+		"Оценка уровня сформированности компетенций",
+	],
 };
 
 const DocumentGenerator = () => {
@@ -34,16 +50,28 @@ const DocumentGenerator = () => {
 		Предприятие: "",
 		Руководитель: "",
 		Оценка: "",
+		"Направление подготовки": "",
 		Специальность: "",
-		Форма: "",
-		Год: "",
+		"Направленность (Профиль)": "",
+		"Учебная группа": "",
+		"Форма обучения": "",
+		"Вид практики": "",
+		"Тип практики": "",
+		"Учебный год": "",
+		Кафедра: "",
+		"Наименование профильной организации": "",
+		"Сроки организации практической подготовки": "",
+		"Руководитель по практической подготовке от кафедры": "",
+		"Руководитель по практической подготовке от профильной организации": "",
+		"Оценка уровня сформированности компетенций": "",
 	});
 	const [markdownContent, setMarkdownContent] = useState("");
+	const [drawerOpen, setDrawerOpen] = useState(true);
 
 	// Функция для считывания markdown файла
-	const fetchMarkdownContent = async () => {
+	const fetchMarkdownContent = async (template) => {
 		try {
-			const response = await axios.get("/Report.md");
+			const response = await axios.get(`/${template}.md`);
 			setMarkdownContent(response.data);
 		} catch (error) {
 			console.error("Error fetching markdown file:", error);
@@ -51,11 +79,12 @@ const DocumentGenerator = () => {
 	};
 
 	useEffect(() => {
-		fetchMarkdownContent();
-	}, []);
+		fetchMarkdownContent(template);
+	}, [template]);
 
 	const handleTemplateChange = (template) => {
 		setTemplate(template);
+		fetchMarkdownContent(template);
 	};
 
 	const handleInputChange = (e) => {
@@ -64,6 +93,10 @@ const DocumentGenerator = () => {
 			...documentData,
 			[name]: value,
 		});
+	};
+
+	const handleDrawerToggle = (open) => {
+		setDrawerOpen(open);
 	};
 
 	const converter = new showdown.Converter();
@@ -90,9 +123,16 @@ const DocumentGenerator = () => {
 				Заголовок
 			</Typography>
 			<Box className="sidebar">
-				<Sidebar onTemplateChange={handleTemplateChange} />
+				<Sidebar
+					onTemplateChange={handleTemplateChange}
+					onDrawerToggle={handleDrawerToggle}
+				/>
 			</Box>
-			<Box className="content">
+			<Box
+				className={`content ${
+					drawerOpen ? "drawer-open" : "drawer-closed"
+				}`}
+			>
 				<Layout
 					documentData={documentData}
 					handleInputChange={handleInputChange}

@@ -18,11 +18,12 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const drawerWidth = 240;
 
-const Sidebar = ({ onTemplateChange }) => {
+const Sidebar = ({ onTemplateChange, onDrawerToggle }) => {
 	const [open, setOpen] = useState(true);
 
 	const handleDrawerToggle = () => {
 		setOpen(!open);
+		onDrawerToggle(!open);
 	};
 
 	return (

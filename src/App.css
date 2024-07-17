@@ -12,13 +12,21 @@
 
 .sidebar {
   align-self: flex-start;
-  width: 240px;
 }
 
 .content {
   display: flex;
-  width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   margin-top: 20px;
-  padding: 0 20px;
+  transition: width 0.3s;
+}
+
+.drawer-open .content {
+  width: calc(100% - 240px);
+  /* Ширина при открытом сайдбаре */
+}
+
+.drawer-closed .content {
+  width: calc(100% - 50px);
+  /* Ширина при закрытом сайдбаре */
 }
