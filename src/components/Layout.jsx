@@ -1,14 +1,10 @@
 import React from "react";
 import "../App.css";
 import "./styles/Layout.css";
-import { Grid, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 
 const Layout = (props) => {
 	const { fields } = props;
-	const title =
-		props.template === "report"
-			? "Отчет по производственной практике"
-			: "Дневник практики";
 
 	return (
 		<div className="container">

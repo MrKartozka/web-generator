@@ -1,15 +1,30 @@
 .container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 300px;
+    /* Увеличенный отступ между колонками */
     padding: 20px;
 }
 
 .inputs {
-    flex: 1;
-    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Расстояние между инпутами */
 }
 
 .output {
-    flex: 2;
     height: 100vh;
+    overflow-y: auto;
+    /* Добавляем прокрутку для длинного контента */
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .output {
+        height: auto;
+    }
 }
