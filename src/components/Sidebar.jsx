@@ -10,6 +10,7 @@ import {
 	ListItemIcon,
 	ListItemText,
 	IconButton,
+	Button,
 } from "@mui/material";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
@@ -18,7 +19,12 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const drawerWidth = 240;
 
-const Sidebar = ({ onTemplateChange, onDrawerToggle }) => {
+const Sidebar = ({
+	onTemplateChange,
+	onDrawerToggle,
+	setDiary,
+	handlePrint,
+}) => {
 	const [open, setOpen] = useState(true);
 
 	const handleDrawerToggle = () => {
@@ -57,7 +63,17 @@ const Sidebar = ({ onTemplateChange, onDrawerToggle }) => {
 								},
 								{ text: "Дневник практики", template: "diary" },
 							].map((item, index) => (
-								<ListItem key={index} disablePadding>
+								<ListItem
+									key={index}
+									disablePadding
+									onClick={() => {
+										if (item.template === "diary") {
+											setDiary(true);
+										} else if (item.template === "report") {
+											setDiary(false);
+										}
+									}}
+								>
 									<ListItemButton
 										onClick={() =>
 											onTemplateChange(item.template)
@@ -75,6 +91,17 @@ const Sidebar = ({ onTemplateChange, onDrawerToggle }) => {
 								</ListItem>
 							))}
 						</List>
+						<Divider />
+						<Box sx={{ padding: 2 }}>
+							<Button
+								variant="contained"
+								color="primary"
+								fullWidth
+								onClick={handlePrint}
+							>
+								Печать
+							</Button>
+						</Box>
 					</>
 				)}
 			</Drawer>

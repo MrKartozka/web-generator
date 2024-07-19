@@ -3,7 +3,7 @@
     display: flex;
     align-items: baseline;
     width: 100%;
-    margin-bottom: 10px; /* Optional: Adjust spacing between lines */
+    margin-bottom: 10px;
   }
   .label {
     white-space: nowrap;
@@ -11,19 +11,19 @@
   .line {
     flex: 1;
     border-bottom: 1px solid black;
-    margin-left: 10px; /* Adjust this margin as needed */
+    margin-left: 10px;
   }
   .fixed-line {
     border-bottom: 1px solid black;
     display: inline-block;
-    width: 150px; /* Fixed width for the "Оценка" line */
-    margin-left: 10px; /* Adjust this margin as needed */
+    width: 150px;
+    margin-left: 10px;
   }
   .signature {
     margin-right: 0; 
-    text-align: right; /* Align text to the right */
+    text-align: right; 
     display: inline-block;
-    width: calc(100% - 150px); /* Adjust this width as needed */
+    width: calc(100% - 150px);
   }
 </style>
 

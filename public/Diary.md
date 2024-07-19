@@ -4,44 +4,62 @@
     align-items: baseline;
     width: 100%;
     margin-bottom: 10px; 
+    font-family: "Times New Roman",serif;
+    font-size: 14pt;
   }
   .label {
     white-space: nowrap;
+    font-family: "Times New Roman",serif;
+    font-size: 14pt;
   }
   .line {
     flex: 1;
     border-bottom: 1px solid black;
     margin-left: 10px;
+    font-family: "Times New Roman",serif;
+    font-size: 14pt;
   }
   .fixed-line {
     border-bottom: 1px solid black;
     display: inline-block;
     width: 150px;
     margin-left: 10px;
+    font-family: "Times New Roman",serif;
+    font-size: 14pt;
   }
   .signature {
     margin-right: 0; 
     text-align: right;
     display: inline-block;
     width: calc(100% - 150px); 
+    font-family: "Times New Roman",serif;
+    font-size: 14pt;
   }
   .center-text {
     text-align: center;
+    font-family: "Times New Roman",serif;
+    font-size: 14pt;
   }
   .table {
     width: 100%;
     border-collapse: collapse;
+    font-family: "Times New Roman",serif;
+    font-size: 14pt;
   }
   .table th, .table td {
     border: 1px solid black;
     padding: 5px;
+    font-family: "Times New Roman",serif;
+    font-size: 14pt;
   }
   .table th {
     background-color: #f2f2f2;
+    font-family: "Times New Roman",serif;
+    font-size: 14pt;
   }
 </style>
 
-<div style="width: 100%;">
+<div style="width: 100%; font-family: 'Times New Roman', serif; font-size: 14pt">
   <!-- Верхний заголовок -->
   <center> 
     Министерство науки и высшего образования Российской Федерации <br>
@@ -68,7 +86,7 @@
 
   <div class="line-container">
     <span class="label"><strong>НАПРАВЛЕНИЕ ПОДГОТОВКИ/СПЕЦИАЛЬНОСТЬ</strong></span>
-    <span class="line">___Направление подготовки___</span>
+    <span class="line">___Направление/Специальность___</span>
   </div>
   <center>
   <small class="center-text">(код и наименование направления подготовки/специальности)</small>
@@ -77,7 +95,7 @@
 
   <div class="line-container">
     <span class="label"><strong>НАПРАВЛЕННОСТЬ (ПРОФИЛЬ)/СПЕЦИАЛИЗАЦИЯ</strong></span>
-    <span class="line">___Направленность (Профиль)___</span>
+    <span class="line">___Направленность/Профиль___</span>
   </div>
   <center>
   <small class="center-text">(наименование основной профессиональной образовательной программы)</small>
@@ -91,8 +109,7 @@
   <br>
 
   <div class="line-container">
-    <span class="label"><strong>ОЧНОЙ/ОЧНО-ЗАОЧНОЙ/ЗАОЧНОЙ ФОРМЫ ОБУЧЕНИЯ</strong></span>
-    <span class="line">___Форма обучения___</span>
+    <span class="label"><strong>___Форма обучения___ ФОРМЫ ОБУЧЕНИЯ</strong></span>
   </div>
   <center>
   <small class="center-text">(нужное выбрать)</small>
@@ -116,8 +133,7 @@
   <br>
 
   <div class="line-container">
-    <span class="label"><strong>202__/202__ УЧЕБНЫЙ ГОД</strong></span>
-    <span class="line">___Учебный год___</span>
+    <span class="label"><strong>___Начало учебного года___/___Конец учебного года___ УЧЕБНЫЙ ГОД</strong></span>
   </div>
   <br>
 
@@ -131,8 +147,10 @@
   <center> 
     г. Воронеж
   </center>
-  <br>
-  
+
+<span><center>**_Календарный год_**</center></span>
+<br>
+
   <!-- Направление на практику -->
   <center> 
     <strong>НАПРАВЛЕНИЕ НА ПРАКТИКУ</strong>
@@ -166,7 +184,7 @@
  
   <div class="line-container">
     <span class="label"><strong>в</strong></span>
-    <span class="line">___Наименование профильной организации___</span>
+    <span class="line">___Город___</span>
   </div>
   <center><small class="center-text">(название населенного пункта)</small> </center>
   <br>
@@ -181,14 +199,13 @@
   <div class="line-container">
     <span class="label"><strong>Срок организации практической подготовки при проведении практики</strong></span>
   </div>
-  (с «____»____________202_ г. по «____»____________ 202__ г.)
-  <span class="line">___Сроки организации практической подготовки___</span>
+  (с «___День начала организации практической подготовки___» ___Месяц начала организации практической подготовки___ ___Календарный год___ г. по «___День конца организации практической подготовки___» ___Месяц конца организации практической подготовки___ ___Календарный год___ г.)
   <br>
   <br>
   <br>
   <div class="line-container">
     <span class="label"><strong>Руководитель по практической подготовке от кафедры</strong></span>
-    <span class="line">___Руководитель по практической подготовке от кафедры___</span>
+    <span class="line">___Руководитель по практической подготовке от кафедры___  ___Номер телефона руководителя по практической подготовке от кафедры___</span>
   </div>
   <small class="signature">(Ф.И.О., номер контактного телефона)</small>
   <br>
@@ -217,12 +234,12 @@
 
   <div class="line-container">
     <span class="label"><strong>Прибыл на практику:</strong></span>
-    («_____»_______________ 202__ г.)
+    («_____»_______________ ___Календарный год___ г.)
   </div>
   
   <div class="line-container">
     <span class="label"><strong>Убыл:</strong></span>
-     («_____»_______________ 202__ г.)
+     («_____»_______________ ___Календарный год___ г.)
   </div>
   
   <br>

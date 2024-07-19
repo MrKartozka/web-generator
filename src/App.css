@@ -21,12 +21,32 @@
   transition: width 0.3s;
 }
 
-.drawer-open .content {
-  width: calc(100% - 240px);
-  /* Ширина при открытом сайдбаре */
+.filled {
+  background-color: #d0f0c0;
 }
 
-.drawer-closed .content {
-  width: calc(100% - 50px);
-  /* Ширина при закрытом сайдбаре */
+.filled input {
+  background-color: #d0f0c0;
+}
+
+.filled .MuiSelect-select {
+  background-color: #d0f0c0;
+}
+
+.print-button {
+  margin-top: 20px;
+}
+
+@media print {
+
+  .sidebar,
+  .inputs,
+  .header-title {
+    display: none !important;
+  }
+
+  .content {
+    margin: auto;
+    width: 100%;
+  }
 }

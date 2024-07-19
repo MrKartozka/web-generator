@@ -1,24 +1,68 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import "../App.css";
 import "./styles/Layout.css";
-import { TextField } from "@mui/material";
+import {
+	TextField,
+	Select,
+	MenuItem,
+	FormControl,
+	InputLabel,
+} from "@mui/material";
 
-const Layout = (props) => {
-	const { fields } = props;
+const Layout = forwardRef((props, ref) => {
+	const {
+		fields,
+		documentData,
+		handleInputChange,
+		handleSelectChange,
+		practiceTypes,
+	} = props;
+
+	const handlePaste = (event) => {
+		const clipboardData = event.clipboardData || window.clipboardData;
+		const pastedData = clipboardData.getData("Text");
+
+		if (pastedData.length > 40) {
+			event.preventDefault();
+		}
+	};
 
 	return (
-		<div className="container">
+		<div className="container" ref={ref}>
 			<div className="inputs">
 				{fields.map((field) => (
 					<div key={field}>
 						<label>{field}</label>
-						<TextField
-							type="text"
-							name={field}
-							value={props.documentData[field]}
-							onChange={props.handleInputChange}
-							fullWidth
-						/>
+						{field === "Вид практики" ? (
+							<FormControl fullWidth>
+								<InputLabel>{field}</InputLabel>
+								<Select
+									name={field}
+									value={documentData[field]}
+									onChange={handleSelectChange}
+									className={
+										documentData[field] ? "filled" : ""
+									}
+								>
+									{practiceTypes.map((type) => (
+										<MenuItem key={type} value={type}>
+											{type}
+										</MenuItem>
+									))}
+								</Select>
+							</FormControl>
+						) : (
+							<TextField
+								type="text"
+								name={field}
+								value={documentData[field]}
+								onChange={handleInputChange}
+								onPaste={handlePaste}
+								inputProps={{ maxLength: 40 }}
+								fullWidth
+								className={documentData[field] ? "filled" : ""}
+							/>
+						)}
 					</div>
 				))}
 			</div>
@@ -27,6 +71,6 @@ const Layout = (props) => {
 			</div>
 		</div>
 	);
-};
+});
 
 export default Layout;
