@@ -20,19 +20,19 @@
     margin-left: 10px;
   }
   .signature {
-    margin-right: 0; 
-    text-align: right; 
+    margin-right: 0;
+    text-align: right;
     display: inline-block;
     width: calc(100% - 150px);
   }
 </style>
 
 <div style="width: 100%;">
-<center> 
+<center>
 Министерство науки и высшего образования Российской Федерации <br>
-Федеральное государственное бюджетное образовательное учреждение<br> 
-высшего образования <br>   
-«Воронежский государственный технический университет» <br> 
+Федеральное государственное бюджетное образовательное учреждение<br>
+высшего образования <br>
+«Воронежский государственный технический университет» <br>
 (ФГБОУ ВО «ВГТУ» ВГТУ)
 </center>
 <br>
@@ -49,11 +49,11 @@
 <br>
 <br>
 
-<center> 
-<strong>ОТЧЕТ ПО (УЧЕБНОЙ/ПРОИЗВОДСТВЕННОЙ) ПРАКТИКЕ</strong> 
-</center>  
+<center>
+<strong>ОТЧЕТ ПО (УЧЕБНОЙ/ПРОИЗВОДСТВЕННОЙ) ПРАКТИКЕ</strong>
+</center>
 <br>
-
+<br>
 <div class="line-container">
   <span class="label"><strong>Обучающийся</strong></span>
   <span class="line">___ФИО___</span>
@@ -92,7 +92,7 @@
 </div>
 <small class="signature">(подпись, И.О.Фамилия)</small>
 <br>
-
+<br>
 <div class="line-container">
   <span class="label"><strong>Руководитель по практической подготовке</strong></span>
   <span class="line">___Руководитель___</span>
@@ -109,7 +109,7 @@
 <br>
 <br>
 
-<center> 
+<center>
 Воронеж
 </center>
 

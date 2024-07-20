@@ -24,6 +24,8 @@ const Sidebar = ({
 	onDrawerToggle,
 	setDiary,
 	handlePrint,
+	handleDownloadPDF,
+	activeTemplate,
 }) => {
 	const [open, setOpen] = useState(true);
 
@@ -32,18 +34,23 @@ const Sidebar = ({
 		onDrawerToggle(!open);
 	};
 
+	const templates = [
+		{ text: "Отчет по производственной практике", template: "report" },
+		{ text: "Дневник практики", template: "diary" },
+	];
+
 	return (
 		<Box sx={{ display: "flex" }}>
 			<Drawer
 				variant="permanent"
 				sx={{
-					width: open ? drawerWidth : 50, // Минимальная ширина для отображения кнопки
+					width: open ? drawerWidth : 50,
 					flexShrink: 0,
 					"& .MuiDrawer-paper": {
 						width: open ? drawerWidth : 50,
 						transition: "width 0.3s",
 						boxSizing: "border-box",
-						overflowX: "hidden", // Скрываем содержимое, когда панель узкая
+						overflowX: "hidden",
 					},
 				}}
 			>
@@ -56,13 +63,7 @@ const Sidebar = ({
 					<>
 						<Divider />
 						<List>
-							{[
-								{
-									text: "Отчет по производственной практике",
-									template: "report",
-								},
-								{ text: "Дневник практики", template: "diary" },
-							].map((item, index) => (
+							{templates.map((item, index) => (
 								<ListItem
 									key={index}
 									disablePadding
@@ -72,12 +73,16 @@ const Sidebar = ({
 										} else if (item.template === "report") {
 											setDiary(false);
 										}
+										onTemplateChange(item.template);
 									}}
 								>
 									<ListItemButton
-										onClick={() =>
-											onTemplateChange(item.template)
-										}
+										sx={{
+											backgroundColor:
+												activeTemplate === item.template
+													? "rgba(0, 0, 255, 0.1)"
+													: "transparent",
+										}}
 									>
 										<ListItemIcon>
 											{index % 2 === 0 ? (
@@ -92,7 +97,14 @@ const Sidebar = ({
 							))}
 						</List>
 						<Divider />
-						<Box sx={{ padding: 2 }}>
+						<Box
+							sx={{
+								padding: 2,
+								display: "flex",
+								flexDirection: "column",
+								gap: 2,
+							}}
+						>
 							<Button
 								variant="contained"
 								color="primary"
@@ -101,6 +113,14 @@ const Sidebar = ({
 							>
 								Печать
 							</Button>
+							{/* <Button
+								variant="contained"
+								color="secondary"
+								fullWidth
+								onClick={handleDownloadPDF}
+							>
+								Скачать PDF
+							</Button> */}
 						</Box>
 					</>
 				)}

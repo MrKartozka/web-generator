@@ -1,90 +1,81 @@
 import React, { useState, useEffect, useRef } from "react";
 import showdown from "showdown";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Layout from "./components/Layout/Layout";
 import "./App.css";
-import Layout from "./components/Layout";
 import { Box, Typography } from "@mui/material";
 import axios from "axios";
-
-// Поля ввода для каждого шаблона
-const inputFields = {
-	report: [
-		"ФАКУЛЬТЕТ",
-		"КАФЕДРА",
-		"ФИО",
-		"Группа",
-		"Вид",
-		"Тип",
-		"Предприятие",
-		"Руководитель",
-		"Оценка",
-	],
-	diary: [
-		"ФИО",
-		"Направление/Специальность",
-		"Направленность/Профиль",
-		"Учебная группа",
-		"Форма обучения",
-		"Вид практики",
-		"Тип практики",
-		"Начало учебного года",
-		"Конец учебного года",
-		"Календарный год",
-		"Кафедра",
-		"Город",
-		"Наименование профильной организации",
-		"День начала организации практической подготовки",
-		"Месяц начала организации практической подготовки",
-		"День конца организации практической подготовки",
-		"Месяц конца организации практической подготовки",
-		"Руководитель по практической подготовке от кафедры",
-		"Номер телефона руководителя по практической подготовке от кафедры",
-		"Руководитель по практической подготовке от профильной организации",
-		"Оценка уровня сформированности компетенций",
-	],
-};
-
-const practiceTypes = ["Учебная", "Производственная", "Преддипломная"];
+import htmlToPdfmake from "html-to-pdfmake";
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+import practicePlans from "./practicePlans.json";
+import { inputFields, practiceTypes } from "./constants";
 
 const DocumentGenerator = () => {
-	const [template, setTemplate] = useState("report");
-	const [documentData, setDocumentData] = useState({
-		ФАКУЛЬТЕТ: "",
-		КАФЕДРА: "",
-		ФИО: "",
-		Группа: "",
-		Вид: "",
-		Тип: "",
-		Предприятие: "",
-		Руководитель: "",
-		Оценка: "",
-		"Направление/Специальность": "",
-		"Направленность/Профиль": "",
-		"Учебная группа": "",
-		"Форма обучения": "",
-		"Вид практики": "",
-		"Тип практики": "",
-		"Начало учебного года": "",
-		"Конец учебного года": "",
-		"Календарный год": "",
-		Кафедра: "",
-		Город: "",
-		"Наименование профильной организации": "",
-		"День начала организации практической подготовки": "",
-		"Месяц начала организации практической подготовки": "",
-		"День конца организации практической подготовки": "",
-		"Месяц конца организации практической подготовки": "",
-		"Руководитель по практической подготовке от кафедры": "",
-		"Номер телефона руководителя по практической подготовке от кафедры": "",
-		"Руководитель по практической подготовке от профильной организации": "",
-		"Оценка уровня сформированности компетенций": "",
+	const [template, setTemplate] = useState(() => {
+		return localStorage.getItem("template") || "report";
+	});
+	const [documentData, setDocumentData] = useState(() => {
+		const savedData = localStorage.getItem("documentData");
+		return savedData
+			? JSON.parse(savedData)
+			: {
+					ФАКУЛЬТЕТ: "",
+					КАФЕДРА: "",
+					ФИО: "",
+					Группа: "",
+					Вид: "",
+					Тип: "",
+					Предприятие: "",
+					Руководитель: "",
+					Оценка: "",
+					"Направление/Специальность": "",
+					"Направленность/Профиль": "",
+					"Учебная группа": "",
+					"Форма обучения": "",
+					"Вид практики": "Учебная практика",
+					"Тип практики": "",
+					"Начало учебного года": "",
+					"Конец учебного года": "",
+					"Календарный год": "",
+					Кафедра: "",
+					Город: "",
+					"Наименование профильной организации": "",
+					"День начала организации практической подготовки": "",
+					"Месяц начала организации практической подготовки": "",
+					"День конца организации практической подготовки": "",
+					"Месяц конца организации практической подготовки": "",
+					"Руководитель по практической подготовке от кафедры": "",
+					"Номер телефона руководителя по практической подготовке от кафедры":
+						"",
+					"Руководитель по практической подготовке от профильной организации":
+						"",
+					"Оценка уровня сформированности компетенций": "",
+			  };
 	});
 	const [markdownContent, setMarkdownContent] = useState("");
 	const [drawerOpen, setDrawerOpen] = useState(true);
-	const [diary, setDiary] = useState(false);
-	const printRef = useRef();
+	const [diary, setDiary] = useState(template === "diary");
+	const [practicePlan, setPracticePlan] = useState([]);
 
-	// Функция для считывания markdown файла
+	const printRef = useRef();
+	const converter = new showdown.Converter();
+
+	useEffect(() => {
+		fetchMarkdownContent(template);
+	}, [template]);
+
+	useEffect(() => {
+		localStorage.setItem("documentData", JSON.stringify(documentData));
+	}, [documentData]);
+
+	useEffect(() => {
+		const initialPlan = practicePlans.types.find(
+			(type) => type.name === "Учебная практика"
+		);
+		setPracticePlan(initialPlan ? initialPlan.plan : []);
+	}, []);
+
 	const fetchMarkdownContent = async (template) => {
 		try {
 			const response = await axios.get(`/${template}.md`);
@@ -94,12 +85,22 @@ const DocumentGenerator = () => {
 		}
 	};
 
-	useEffect(() => {
-		fetchMarkdownContent(template);
-	}, [template]);
-
 	const handleTemplateChange = (template) => {
 		setTemplate(template);
+		localStorage.setItem("template", template);
+		const newDocumentData = { ...documentData };
+
+		inputFields[template].forEach((field) => {
+			if (!newDocumentData[field]) {
+				newDocumentData[field] = "";
+			}
+		});
+
+		if (template === "diary") {
+			newDocumentData["Вид практики"] = practiceTypes[0];
+		}
+
+		setDocumentData(newDocumentData);
 		fetchMarkdownContent(template);
 	};
 
@@ -120,13 +121,16 @@ const DocumentGenerator = () => {
 			...documentData,
 			[name]: value,
 		});
+		const selectedPlan = practicePlans.types.find(
+			(type) => type.name === value
+		);
+		setPracticePlan(selectedPlan ? selectedPlan.plan : []);
 	};
 
 	const handleDrawerToggle = (open) => {
 		setDrawerOpen(open);
 	};
 
-	const converter = new showdown.Converter();
 	const generateMarkdown = () => {
 		let markdown = markdownContent;
 		for (let key in documentData) {
@@ -139,7 +143,23 @@ const DocumentGenerator = () => {
 		return markdown;
 	};
 
-	const htmlContent = converter.makeHtml(generateMarkdown());
+	const generateTableRows = () => {
+		return practicePlan
+			.map(
+				(item, index) =>
+					`<tr key=${index}>
+                <td valign="top"></td>
+                <td>${item.stage}</td>
+                <td>${item.tasks}</td>
+                <td></td>
+            </tr>`
+			)
+			.join("");
+	};
+
+	const htmlContent = converter
+		.makeHtml(generateMarkdown())
+		.replace("<!-- РАБОЧИЙ ГРАФИК -->", generateTableRows());
 
 	useEffect(() => {
 		if (window.PagedPolyfill) {
@@ -149,6 +169,15 @@ const DocumentGenerator = () => {
 
 	const handlePrint = () => {
 		window.print();
+	};
+
+	const handleDownloadPDF = () => {
+		const pdfContent = htmlToPdfmake(htmlContent);
+		const docDefinition = {
+			content: pdfContent,
+		};
+		pdfMake.vfs = pdfFonts.pdfMake.vfs;
+		pdfMake.createPdf(docDefinition).download("document.pdf");
 	};
 
 	return (
@@ -164,6 +193,8 @@ const DocumentGenerator = () => {
 					onDrawerToggle={handleDrawerToggle}
 					setDiary={setDiary}
 					handlePrint={handlePrint}
+					handleDownloadPDF={handleDownloadPDF}
+					activeTemplate={template}
 				/>
 			</Box>
 			<Box
