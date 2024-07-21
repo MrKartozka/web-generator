@@ -80,7 +80,21 @@ const DocumentGenerator = () => {
 
 	const fetchMarkdownContent = async (template) => {
 		try {
-			const response = await axios.get(`/${template}.md`);
+			// Выбираем нужный файл на основе шаблона
+			let filePath;
+			switch (template) {
+				case "diary":
+					filePath = "/markdown/Diary.md";
+					break;
+				case "report":
+					filePath = "/markdown/Report.md";
+					break;
+				default:
+					filePath = `/markdown/${template}.md`;
+			}
+
+			// Выполняем запрос к выбранному файлу
+			const response = await axios.get(filePath);
 			setMarkdownContent(response.data);
 		} catch (error) {
 			console.error("Error fetching markdown file:", error);
