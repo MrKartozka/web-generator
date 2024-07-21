@@ -1,6 +1,7 @@
 import React, { forwardRef } from "react";
 import "./Layout.css";
 import InputField from "../Inputs/InputField";
+import TextAreaField from "../Inputs/TextAreaField";
 
 const Layout = forwardRef((props, ref) => {
 	const {
@@ -16,7 +17,7 @@ const Layout = forwardRef((props, ref) => {
 		const clipboardData = event.clipboardData || window.clipboardData;
 		const pastedData = clipboardData.getData("Text");
 
-		if (pastedData.length > 40) {
+		if (pastedData.length > 118) {
 			event.preventDefault();
 		}
 	};
@@ -25,15 +26,31 @@ const Layout = forwardRef((props, ref) => {
 		<div className="container" ref={ref}>
 			<div className="inputs">
 				{fields.map((field) => (
-					<InputField
+					<div
 						key={field}
-						field={field}
-						value={documentData[field] || ""}
-						handleInputChange={handleInputChange}
-						handleSelectChange={handleSelectChange}
-						practiceTypes={practiceTypes}
-						handlePaste={handlePaste}
-					/>
+						className="textarea-container hidden-print input-field"
+					>
+						{field.startsWith("Индивидуальное задание") ||
+						field.startsWith("Характеристика-отзыв") ||
+						field.startsWith("Выводы и оценки кафедры") ? (
+							<TextAreaField
+								field={field}
+								value={documentData[field] || ""}
+								handleInputChange={handleInputChange}
+								className="hidden-print"
+							/>
+						) : (
+							<InputField
+								field={field}
+								value={documentData[field] || ""}
+								handleInputChange={handleInputChange}
+								handleSelectChange={handleSelectChange}
+								practiceTypes={practiceTypes}
+								handlePaste={handlePaste}
+								className="input-field"
+							/>
+						)}
+					</div>
 				))}
 			</div>
 			<div className="output">

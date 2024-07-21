@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* text-align: left; */
 }
 
 .header-title {
@@ -25,7 +24,8 @@
   background-color: #d0f0c0;
 }
 
-.filled input {
+.filled input,
+.filled textarea {
   background-color: #d0f0c0;
 }
 
@@ -35,6 +35,20 @@
 
 .print-button {
   margin-top: 20px;
+}
+
+.textarea-container {
+  margin-bottom: 10px;
+}
+
+.inputs {
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.output {
+  height: 100vh;
+  overflow-y: auto;
 }
 
 @media print {
@@ -55,10 +69,17 @@
     display: none;
   }
 
+  .hidden-print {
+    display: none !important;
+  }
+
   .content {
     -ms-overflow-style: none;
-    /* IE and Edge */
     scrollbar-width: none;
-    /* Firefox */
+  }
+
+  .inputs,
+  .output {
+    overflow: visible !important;
   }
 }

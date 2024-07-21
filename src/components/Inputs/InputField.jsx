@@ -14,8 +14,10 @@ const InputField = ({
 	handleSelectChange,
 	practiceTypes,
 	handlePaste,
+	className,
 }) => {
 	return (
+		// <div className={className}>
 		<div>
 			<label>{field}</label>
 			{field === "Вид практики" ? (
@@ -25,7 +27,7 @@ const InputField = ({
 						name={field}
 						value={value}
 						onChange={handleSelectChange}
-						className={value ? "filled" : ""}
+						className={value ? "filled" : className}
 					>
 						{practiceTypes.map((type) => (
 							<MenuItem key={type} value={type}>
@@ -43,7 +45,7 @@ const InputField = ({
 					onPaste={handlePaste}
 					inputProps={{ maxLength: 40 }}
 					fullWidth
-					className={value ? "filled" : ""}
+					className={value ? "filled" : className}
 				/>
 			)}
 		</div>

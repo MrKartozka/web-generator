@@ -30,7 +30,9 @@ const DocumentGenerator = () => {
 					Руководитель: "",
 					Оценка: "",
 					"Направление/Специальность": "",
+					"Направление/СпециальностьДопстрока": "",
 					"Направленность/Профиль": "",
+					"Направленность/ПрофильДопстрока": "",
 					"Учебная группа": "",
 					"Форма обучения": "",
 					"Вид практики": "Учебная практика",
@@ -107,12 +109,10 @@ const DocumentGenerator = () => {
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
 
-		if (value.length <= 40) {
-			setDocumentData({
-				...documentData,
-				[name]: value,
-			});
-		}
+		setDocumentData({
+			...documentData,
+			[name]: value,
+		});
 	};
 
 	const handleSelectChange = (e) => {
