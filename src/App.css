@@ -48,5 +48,17 @@
   .content {
     margin: auto;
     width: 100%;
+    overflow: visible !important;
+  }
+
+  .content::-webkit-scrollbar {
+    display: none;
+  }
+
+  .content {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
   }
 }

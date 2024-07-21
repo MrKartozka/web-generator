@@ -25,6 +25,12 @@
     display: inline-block;
     width: calc(100% - 150px);
   }
+  .signature-right {
+    margin-right: 2;
+    text-align: right;
+    display: inline-block;
+    width: calc(100% - 30px);
+  }
 </style>
 
 <div style="width: 100%;">
@@ -97,7 +103,7 @@
   <span class="label"><strong>Руководитель по практической подготовке</strong></span>
   <span class="line">___Руководитель___</span>
 </div>
-<small class="signature">(подпись, И.О.Фамилия)</small>
+<small class="signature-right" >(подпись, И.О.Фамилия)</small>
 <br>
 <br>
 
@@ -110,7 +116,7 @@
 <br>
 
 <center>
-Воронеж
+Воронеж <span>___Календарный год___</span>
 </center>
 
 </div>

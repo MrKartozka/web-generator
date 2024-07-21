@@ -26,3 +26,20 @@
         height: auto;
     }
 }
+
+@media print {
+    .output {
+        overflow: visible !important;
+    }
+
+    .output::-webkit-scrollbar {
+        display: none;
+    }
+
+    .output {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+}
