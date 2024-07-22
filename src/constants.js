@@ -45,3 +45,4 @@ export const inputFields = {
 };
 
 export const practiceTypes = ["Учебная практика", "Производственная практика"];
+export const studiesForms = ["ОЧНОЙ", "ЗАОЧНОЙ", "ОЧНО-ЗАОЧНОЙ"];

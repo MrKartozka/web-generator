@@ -6,6 +6,7 @@ import {
 	FormControl,
 	InputLabel,
 } from "@mui/material";
+import { studiesForms } from "../../constants";
 
 const InputField = ({
 	field,
@@ -17,23 +18,23 @@ const InputField = ({
 	className,
 	practicesTypes,
 }) => {
-
 	let typesCollection = [];
-
 
 	if (field === "Вид практики") {
 		typesCollection = practiceTypes;
-	}
-	else if (field === "Тип практики") {
+	} else if (field === "Тип практики") {
 		typesCollection = practicesTypes;
+	} else if (field === "Форма обучения") {
+		typesCollection = studiesForms;
 	}
-
 
 	return (
 		// <div className={className}>
 		<div>
 			<label>{field}</label>
-			{field === "Вид практики" || field === "Тип практики" ? (
+			{field === "Вид практики" ||
+			field === "Тип практики" ||
+			field === "Форма обучения" ? (
 				<FormControl fullWidth>
 					<InputLabel>{field}</InputLabel>
 					<Select
@@ -46,8 +47,7 @@ const InputField = ({
 							<MenuItem key={type} value={type}>
 								{type}
 							</MenuItem>
-						))
-						}
+						))}
 					</Select>
 				</FormControl>
 			) : (

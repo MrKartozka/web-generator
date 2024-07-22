@@ -271,7 +271,7 @@ const DocumentGenerator = () => {
 					</div>
 				`
 			: `
-					<div class="line-style" style="word-wrap: break-word; text-decoration: underline">
+					<div class="line-style" style="word-wrap: break-word; text-decoration: underline; text-align: justify">
     					<span class="multiline_text">${documentData["Индивидуальное задание"]}</span>
   					</div>`;
 	};
@@ -311,7 +311,7 @@ const DocumentGenerator = () => {
 					</div>
 				`
 			: `
-				<div class="line-style" style="word-wrap: break-word; text-decoration: underline">
+				<div class="line-style" style="word-wrap: break-word; text-decoration: underline; text-align: justify">
 					<span class="multiline_text">${documentData["Характеристика-отзыв"]}</span>
 				</div>`;
 	};
@@ -351,7 +351,7 @@ const DocumentGenerator = () => {
 					</div>
 				`
 			: `
-				<div class="line-style" style="word-wrap: break-word; text-decoration: underline">
+				<div class="line-style" style="word-wrap: break-word; text-decoration: underline; text-align: justify">
 					<span class="multiline_text">${documentData["Выводы и оценки кафедры"]}</span>
 				</div>`;
 	};
