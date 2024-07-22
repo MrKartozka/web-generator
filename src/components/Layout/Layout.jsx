@@ -11,6 +11,7 @@ const Layout = forwardRef((props, ref) => {
 		handleSelectChange,
 		practiceTypes,
 		htmlContent,
+		practicesTypes,
 	} = props;
 
 	const handlePaste = (event) => {
@@ -46,6 +47,7 @@ const Layout = forwardRef((props, ref) => {
 								handleInputChange={handleInputChange}
 								handleSelectChange={handleSelectChange}
 								practiceTypes={practiceTypes}
+								practicesTypes={practicesTypes}
 								handlePaste={handlePaste}
 								className="input-field"
 							/>

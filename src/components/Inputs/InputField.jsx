@@ -15,12 +15,25 @@ const InputField = ({
 	practiceTypes,
 	handlePaste,
 	className,
+	practicesTypes,
 }) => {
+
+	let typesCollection = [];
+
+
+	if (field === "Вид практики") {
+		typesCollection = practiceTypes;
+	}
+	else if (field === "Тип практики") {
+		typesCollection = practicesTypes;
+	}
+
+
 	return (
 		// <div className={className}>
 		<div>
 			<label>{field}</label>
-			{field === "Вид практики" ? (
+			{field === "Вид практики" || field === "Тип практики" ? (
 				<FormControl fullWidth>
 					<InputLabel>{field}</InputLabel>
 					<Select
@@ -29,11 +42,12 @@ const InputField = ({
 						onChange={handleSelectChange}
 						className={value ? "filled" : className}
 					>
-						{practiceTypes.map((type) => (
+						{typesCollection.map((type) => (
 							<MenuItem key={type} value={type}>
 								{type}
 							</MenuItem>
-						))}
+						))
+						}
 					</Select>
 				</FormControl>
 			) : (
@@ -43,7 +57,7 @@ const InputField = ({
 					value={value}
 					onChange={handleInputChange}
 					onPaste={handlePaste}
-					inputProps={{ maxLength: 40 }}
+					inputProps={{ maxLength: 100 }}
 					fullWidth
 					className={value ? "filled" : className}
 				/>

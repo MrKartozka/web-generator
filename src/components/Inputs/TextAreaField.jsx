@@ -12,7 +12,12 @@ const TextAreaField = ({ field, value, handleInputChange, className }) => {
 				onChange={handleInputChange}
 				multiline
 				rows={4}
-				inputProps={{ maxLength: 118 }}
+				inputProps={field === "Индивидуальное задание"
+				|| field === "Характеристика-отзыв"
+				|| field === "Выводы и оценки кафедры" ?
+					{ maxLength: 1000 }
+					:
+					{ maxLength: 118 }}
 				fullWidth
 				className={value ? "filled" : ""}
 			/>

@@ -75,13 +75,13 @@
 
 <div class="line-container">
   <span class="label"><strong>Вид практики</strong></span>
-  <span class="line">___Вид___</span>
+  <span class="line">___Вид практики___</span>
 </div>
 <br>
 
 <div class="line-container">
   <span class="label"><strong>Тип практики</strong></span>
-  <span class="line">___Тип___</span>
+  <span class="line">___Тип практики___</span>
 </div>
 <br>
 

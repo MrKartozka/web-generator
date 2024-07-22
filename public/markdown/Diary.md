@@ -68,6 +68,18 @@
     font-size: 14pt;
   }
 
+  .multiline_text {
+    flex: 1;
+    font-size: 14pt;
+  }
+
+  .line-multiline {
+    flex: 1;
+    border-bottom: 1px solid black;
+    margin-left: 10px;
+    font-size: 14pt;
+  }
+
 </style>
 
 <div style="width: 100%; font-size: 14pt">
@@ -97,20 +109,22 @@
 
   <div class="line-container">
     <span class="label"><strong>НАПРАВЛЕНИЕ ПОДГОТОВКИ/СПЕЦИАЛЬНОСТЬ</strong></span>
-    <span class="line">___Направление/Специальность___</span>
   </div>
-  <div class="line-container"> <span class="line">___Направление/СпециальностьДопстрока___</span> </div>
+  <div class="line-container">
+    <span class="line" style="word-wrap: break-word">___Направление/Специальность___</span>
+  </div>
   <center>
-  <small class="center-text">(код и наименование направления подготовки/специальности)</small>
+  <small class="multiline_text">(код и наименование направления подготовки/специальности)</small>
   </center>
   <br>
 
   <div class="line-container">
     <span class="label"><strong>НАПРАВЛЕННОСТЬ (ПРОФИЛЬ)/СПЕЦИАЛИЗАЦИЯ</strong></span>
-    <span class="line"> ___Направленность/Профиль___</span>
   </div>
-  <div class="line-container"> <span class="line">___Направленность/ПрофильДопстрока___</span> </div>
-  <center>
+  <div class="line-container">
+    <span class="line">___Направленность/Профиль___</span>
+  </div>
+ <center>
   <small class="center-text">(наименование основной профессиональной образовательной программы)</small>
   </center>
   <br>
@@ -121,7 +135,7 @@
   </div>
 <br>
   <div class="line-container">
-    <span class="label"><strong>___Форма обучения___ ФОРМА ОБУЧЕНИЯ</strong></span>
+    <span class="label"><strong>___Форма обучения___ ФОРМЫ ОБУЧЕНИЯ</strong></span>
   </div>
   <br>
   <center>
@@ -169,10 +183,7 @@
   <center> 
     Воронеж <span class="middle-report-end">___Календарный год___</span>
   </center>
-
 <br>
-
-  <div class="page-break"></div>
 
   <!-- Направление на практику -->
   <center  class="middle-report-info"> 
@@ -192,14 +203,14 @@
   </div>
   
   <div class="line-container">
-    <span class="line">___Вид практики___</span>
+    <span class="line" style="text-align: center">___Вид практики___</span>
   </div>
   
   <center>
   <small class="center-text">(вид практики)</small>  </center> 
   
   <div class="line-container">
-    <span class="line">___Тип практики___</span>
+    <span class="line" style="text-align: center">___Тип практики___</span>
   </div>
   
   <center><small class="center-text">(тип практики)</small> </center>
@@ -207,13 +218,13 @@
  
   <div class="line-container">
     <span class="label"><strong>в</strong></span>
-    <span class="line">___Город___</span>
+    <span class="line" style="text-align: center">___Город___</span>
   </div>
   <center><small class="center-text">(название населенного пункта)</small> </center>
   
    
   <div class="line-container">
-    <span class="line">___Наименование профильной организации___</span>
+    <span class="line" style="text-align: center">___Наименование профильной организации___</span>
   </div>
   <center>
   <small class="center-text">(наименование профильной организации / структурного подразделения ВГТУ)</small></center>
@@ -238,14 +249,14 @@
 
   <div class="line-container">
     <span class="label"><strong>Обучающийся</strong></span>
-    <span class="line">___ФИО___</span>
+    <span class="line" style="text-align: center">/ ___ФИО___</span>
   </div>
   <center><small >(подпись, И.О.Фамилия обучающегося)</small></center>
   <br>
 
   <div class="line-container">
     <span class="label"><strong>Заведующий кафедрой</strong></span>
-    <span class="line"></span>
+    <span class="line" style="text-align: center">/ ___Заведующий кафедрой___</span>
   </div>
   <center><small >(подпись, И.О.Фамилия)</small></center>
 
@@ -274,7 +285,7 @@
   </div>
   
   <div class="line-container">
-    <span class="line">___Руководитель по практической подготовке от профильной организации___</span>
+    <span class="line" style="text-align: center">/ ___Руководитель по практической подготовке от профильной организации___</span>
   </div>
   <center><small >(подпись, И.О.Фамилия)</small></center>
   
@@ -286,7 +297,7 @@
   </div>
   
   <div class="line-container">
-    <span class="line">___Руководитель по практической подготовке от кафедры___</span>
+    <span class="line" style="text-align: center">/ ___Руководитель по практической подготовке от кафедры___</span>
   </div>
   <center>
   <small >(подпись, И.О.Фамилия)</small></center>
@@ -351,33 +362,8 @@
     <strong>ИНДИВИДУАЛЬНОЕ ЗАДАНИЕ, ВЫПОЛНЯЕМОЕ ОБУЧАЮЩИМСЯ НА ПРАКТИКЕ, ПРОВОДИМОЙ В ФОРМЕ ПРАКТИЧЕСКОЙ ПОДГОТОВКИ</strong>
   </center>
   <br>
-  <div class="line-style">
-    <span class="line">___Индивидуальное задание 1___</span>
-  </div>
-  
-  <div class="line-style">
-    <span class="line">___Индивидуальное задание 2___</span>
-  </div>
-  
-  <div class="line-style">
-    <span class="line">___Индивидуальное задание 3___</span>
-  </div>
-  
-  <div class="line-style">
-    <span class="line">___Индивидуальное задание 4___</span>
-  </div>
-  
-  <div class="line-style">
-    <span class="line">___Индивидуальное задание 5___</span>
-  </div>
-  
-  <div class="line-style">
-    <span class="line">___Индивидуальное задание 6___</span>
-  </div>
-  
-  <div class="line-style">
-    <span class="line">___Индивидуальное задание 7___</span>
-  </div>
+
+  <!-- ИНДИВИДУАЛЬНОЕ ЗАДАНИЕ -->
   Содержание практики и планируемые результаты по практике, определенные рабочей программой практики, соответствуют индивидуальному заданию, выданному обучающемуся.
   <br>
   <br>
@@ -385,9 +371,9 @@
   <div class="line-container">
     <span class="label"><strong>Руководитель по практической подготовке от кафедры</strong></span>
   </div>
-  <span>_______________/______________________</span><br>
+  <span style="text-decoration: underline; white-space: pre">                     / ___Руководитель по практической подготовке от кафедры___   </span><br>
   <small style= "margin-left: 50px" >(подпись, И.О.Фамилия)</small><br>
-  <span> «_____»_____________ 202__г.</span>
+  <span> «_____»_____________ ___Календарный год___ г.</span>
   <br>
   <br>
   <br>
@@ -397,15 +383,15 @@
   <div class="line-container">
   <span class="label"><strong>Руководитель по практической подготовке от кафедры</strong></span>
   </div>
-  <span>_______________/______________________</span><br>
+  <span style="text-decoration: underline; white-space: pre">                     / ___Руководитель по практической подготовке от кафедры___   </span><br>
   <small style= "margin-left: 50px">(подпись, И.О.Фамилия)</small><br>
-  <span> «_____»_____________ 202__г.</span><br>
+  <span> «_____»_____________ ___Календарный год___ г.</span><br>
   <br>
   <div class="line-container">
     <span class="label"><strong>Задание принято к исполнению</strong></span>
-    «_____»_____________ 202__г.
+    «_____»_____________ ___Календарный год___ г.
   </div>
-  <span>_______________/______________________</span><br>
+  <span style="text-decoration: underline; white-space: pre">                     / ___ФИО___   </span><br>
   <small style= "margin-left: 20px">(подпись, И.О.Фамилия обучающегося)</small>
   <br>
   <br>
@@ -449,16 +435,16 @@
   <div class="line-container">
     <span class="label"><strong>Руководитель по практической подготовке от кафедры</strong></span>
   </div>
-  <span>_______________/______________________</span><br>
+  <span style="text-decoration: underline; white-space: pre">                     / ___Руководитель по практической подготовке от кафедры___   </span><br>
   <small style= "margin-left: 40px">(подпись, И.О.Фамилия)</small><br>
-  <!-- <span> «_____»_____________ 202__г.</span> -->
+  <!-- <span> «_____»_____________ ___Календарный год___ г.</span> -->
   <br>
   <div class="line-container">
     <span class="label"><strong>Руководитель по практической подготовке от профильной организации</strong></span>
   </div>
-  <span>_______________/______________________</span><br>
+  <span style="text-decoration: underline; white-space: pre">                     / ___Руководитель по практической подготовке от профильной организации___   </span><br>
   <small style= "margin-left: 40px">(подпись, И.О.Фамилия)</small><br>
-  <span > «_____»_____________ 202__г.</span>
+  <span > «_____»_____________ ___Календарный год___ г.</span>
 
   <br>
 
@@ -468,57 +454,8 @@
     <strong>ХАРАКТЕРИСТИКА–ОТЗЫВ РУКОВОДИТЕЛЯ ПО ПРАКТИЧЕСКОЙ ПОДГОТОВКЕ ОТ ПРОФИЛЬНОЙ ОРГАНИЗАЦИИ</strong>
 </center>
 <br>
-<div class="line-style">
-    <span class="line">___Характеристика-отзыв 1___</span>
-</div>
 
-<div class="line-style">
-    <span class="line">___Характеристика-отзыв 2___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Характеристика-отзыв 3___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Характеристика-отзыв 4___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Характеристика-отзыв 5___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Характеристика-отзыв 6___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Характеристика-отзыв 7___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Характеристика-отзыв 8___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Характеристика-отзыв 9___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Характеристика-отзыв 10___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Характеристика-отзыв 11___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Характеристика-отзыв 12___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Характеристика-отзыв 13___</span>
-</div>
+<!-- ХАРАКТЕРИСТИКА-ОТЗЫВ -->
 
 <div class="line-container">
     <span class="label"><strong>Руководитель по практической подготовке от профильной организации</strong></span>
@@ -533,7 +470,7 @@
 <small style= "margin-left: 100px">(И.О.Фамилия)</small>
 <br><br>
 <small class="center-text">М.П.</small>
-<span style= "margin-left: 100px"> «_____»_____________ 202__г.</span>
+<span style= "margin-left: 100px"> «_____»_____________ ___Календарный год___ г.</span>
 
 <br>
  <div class="page-break"></div>
@@ -551,26 +488,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
+      <!-- КОМПЕТЕНЦИИ -->
     </tbody>
   </table>
 
@@ -584,7 +502,7 @@
   </div>
   <span>____________________/_________________________</span><br>
   <small style= "margin-left: 100px">(подпись, И.О.Фамилия)</small><br><br>
-  <span> «_____»_____________ 202__г.</span>
+  <span> «_____»_____________ ___Календарный год___ г.</span>
   <br>
 
   <!-- Выводы и оценки кафедры -->
@@ -593,60 +511,14 @@
     <strong>ВЫВОДЫ И ОЦЕНКИ КАФЕДРЫ ПО ИТОГАМ ПРОХОЖДЕНИЯ ОБУЧАЮЩИМСЯ ПРАКТИКИ В ФОРМЕ ПРАКТИЧЕСКОЙ ПОДГОТОВКИ</strong>
 </center>
 <br>
-<div class="line-style">
-    <span class="line">___Выводы и оценки кафедры 1___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Выводы и оценки кафедры 2___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Выводы и оценки кафедры 3___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Выводы и оценки кафедры 4___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Выводы и оценки кафедры 5___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Выводы и оценки кафедры 6___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Выводы и оценки кафедры 7___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Выводы и оценки кафедры 8___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Выводы и оценки кафедры 9___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Выводы и оценки кафедры 10___</span>
-</div>
-
-<div class="line-style">
-    <span class="line">___Выводы и оценки кафедры 11___</span>
-</div>
-<br>
-<div class="line-style">
-    <span class="line">___Выводы и оценки кафедры 12___</span>
-</div>
+<!-- ВЫВОДЫ И ОЦЕНКИ КАФЕДРЫ -->
 <br>
 <div class="line-container">
     <span class="label"><strong>Руководитель по практической подготовке от кафедры</strong></span>
 </div>
-<span>____________________/_________________________</span><br>
+  <span style="text-decoration: underline; white-space: pre">                     / ___Руководитель по практической подготовке от кафедры___   </span><br>
 <small style= "margin-left: 100px">(подпись, И.О.Фамилия)</small><br><br>
-<span> «_____»_____________ 202__г.</span>
+<span> «_____»_____________ ___Календарный год___ г.</span>
 </div>
 <br>
 <br>
