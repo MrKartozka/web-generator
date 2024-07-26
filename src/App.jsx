@@ -390,34 +390,36 @@ const DocumentGenerator = () => {
 					? "Дневник практики"
 					: "Отчет по производственной практике"}
 			</Typography>
-			<Box className="sidebar">
-				<Sidebar
-					onTemplateChange={handleTemplateChange}
-					onDrawerToggle={handleDrawerToggle}
-					setDiary={setDiary}
-					handlePrint={handlePrint}
-					handleDownloadPDF={handleDownloadPDF}
-					activeTemplate={template}
-				/>
-			</Box>
-			<Box
-				className={`content ${
-					drawerOpen ? "drawer-open" : "drawer-closed"
-				}`}
-				ref={printRef}
-			>
-				<Layout
-					documentData={documentData}
-					handleInputChange={handleInputChange}
-					handleSelectChange={handleSelectChange}
-					htmlContent={htmlContent}
-					template={template}
-					fields={inputFields[template]}
-					practiceTypes={practiceTypes}
-					practiceType={practiceType}
-					practicesTypes={practicesTypes}
-				/>
-			</Box>
+			<div className='content-box'>
+				<Box className="sidebar">
+					<Sidebar
+						onTemplateChange={handleTemplateChange}
+						onDrawerToggle={handleDrawerToggle}
+						setDiary={setDiary}
+						handlePrint={handlePrint}
+						handleDownloadPDF={handleDownloadPDF}
+						activeTemplate={template}
+					/>
+				</Box>
+				<Box
+					className={`content ${
+						drawerOpen ? "drawer-open" : "drawer-closed"
+					}`}
+					ref={printRef}
+				>
+					<Layout
+						documentData={documentData}
+						handleInputChange={handleInputChange}
+						handleSelectChange={handleSelectChange}
+						htmlContent={htmlContent}
+						template={template}
+						fields={inputFields[template]}
+						practiceTypes={practiceTypes}
+						practiceType={practiceType}
+						practicesTypes={practicesTypes}
+					/>
+				</Box>
+			</div>
 		</Box>
 	);
 };
